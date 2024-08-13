@@ -1,0 +1,145 @@
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: linear-gradient(135deg, #0f2446, #03131f);
+  }
+
+  .main {
+    position: relative;
+    height: 90vh;
+    width: 80vw;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgb(11, 3, 3);
+  }
+
+  .main img {
+    height: inherit;
+    width: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+
+  }
+
+  .heading .secondbox img {
+    height: 60px;
+    width: 40px;
+  }
+
+  .heading .secondbox {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    color: orangered;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .heading .secondbox  h3 {
+    color: orange;
+  }
+  .heading .secondbox h2 {
+    border-bottom:3px solid orangered;
+    font-family: cursive;
+  }
+.secondbox {
+  display: flex; 
+}
+
+  .container {
+    height:85%;
+    margin: 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    overflow-x: hidden;
+  }
+  .container .notes {
+    height: 120px;
+    width: 220px;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    margin: 10px;
+    overflow: hidden;
+    
+  }
+
+  .notes:focus{
+    border: none;
+    outline: none;
+  }
+
+  .fa-trash {
+   position: absolute;
+   bottom: 15px;
+   right: 15px; 
+   transition: all 0.2s;
+   
+  }
+
+  .fa-trash:hover{
+    color: rgb(201, 3, 3);
+  }
+
+  #newNote {
+    position: absolute;
+    right: 0;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border: none;
+    font-family: cursive;
+    background-color:tomato;
+    color:rgb(12, 12, 70);
+    transition: all 0.5s;
+  }
+
+  #newNote:hover {
+    background-color: rgb(12,
+      12,
+      70);
+      color: white;
+  }
+
+        #newNote:active {
+          background-color: tomato;
+        }
+
+  .fa-thumbtack {
+    position: absolute;
+    top:5px;
+    right: -5px;
+    color: yellow;
+    font-size: 20px;
+    -webkit-text-stroke: 1px black;
+    rotate: 40deg;
+  }
+
+  .wrapper {
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .main::before{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    transition: 0.5s all;
+
+  }
+
+    .main:hover::before{
+        background-color: rgba(0, 0, 0, 0.557);
+    }

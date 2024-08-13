@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+  <title>Quotes</title>
+  <style>
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+body{
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  background-color: rgb(158, 158, 158);
+  padding: 50px;
+}
+
+.main {
+  height: fit-content;
+  width: 800px;
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.main h1 {
+  position: relative;
+
+}
+
+.main h1::before{
+  content: '';
+  height: 2px;
+  width: 20%;
+  position: absolute;
+  background-color: red;
+  bottom: -3px;
+  left: 40%;
+
+}
+
+.main h3 {
+  margin-top: 6%;
+  font-family: cursive;
+  color: rgb(13, 13, 120);
+}
+
+.main p {
+  margin-top: 20px;
+  margin-right: 50px;
+  text-align: right;
+  font-size: 12px;
+  color: orangered;
+}
+
+.main button {
+  border: none;
+  padding: 10px;
+  height: 40px;
+  width: 120px;
+  border-radius: 30px;
+  background-color: transparent;
+  margin-top: 15px;
+  margin-left: 10px;
+  border: 1px solid #1DA1F2;
+  transition: all 0.2s;
+}
+
+.main button:hover {
+  scale: 1.05;
+  transform: translateY(-2px);
+  box-shadow: 2px 2px 2px gray;
+
+}
+
+.main button:active{
+  scale: 1;
+  transform: translateY(0);
+}
+
+.main button:nth-child(4){
+  background-color: #1DA1F2;
+  color: white;
+  font-family: cursive;
+  
+}
+
+.main button i {
+  color: #1397e9;
+  font-size: 18px;
+  margin-right: 2px;
+}
+
+
+  </style>
+</head>
+<body>
+   <div class="main">
+      <h1>Qoute of the day</h1>
+      <h3>How are you feeling today?</h3>
+        <p id="author"></i></p>
+        <button id="nextButton">New quote</button>
+        <button id="tweet"><i class="fa-brands fa-twitter"></i>Tweet</button>
+   </div>
+</body>
+<script>
+
+const url = 'https://api.quotable.io/random'
+
+const quoteShow = async () =>{
+    const response = await fetch(url)
+    const data = await response.json()
+    const {content, author} = data
+    document.querySelector('h3').innerText = `“${content}”`
+    authr.innerHTML = `<i class="fa-solid fa-pen">  ${author}`;
+    
+      const tweetPost = () => {
+        window.open(`https://twitter.com/intent/tweet?text=${content}`, 'tweet window', 'height=300px, width=600px' )
+      }
+    
+      tweet.addEventListener('click', tweetPost)
+}
+
+const nextButton = document.getElementById('nextButton')
+const tweet = document.getElementById('tweet')
+const authr = document.getElementById('author')
+console.log(author);
+
+nextButton.addEventListener('click', quoteShow)
+
+</script>
+</html>

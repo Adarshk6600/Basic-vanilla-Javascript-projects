@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <style>
+  body {
+    height: 100vh;
+    display: grid;
+    place-content:center;
+    padding: 0%;
+    margin: 0;
+    font-family: cursive;
+    background-color: rgba(96, 147, 136, 0.553);
+  }
+  .main{
+    width: clamp(300px, 400px, 100% );
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px;
+    align-items: center;
+    justify-content: center;
+    row-gap: 20px;
+    background: teal;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.594);
+
+    
+  }
+  .main img {
+    height: 200px;
+    width: 200px;
+    margin-top: 10px;
+    display: none;
+  }
+
+  .main input {
+    outline: none;
+    border: none;
+    height: 30px;
+    width:100%;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    background: rgb(5, 41, 99);
+    border-bottom:2px solid gold;
+    color: white;
+  }
+
+  .main button {
+    height: 40px;
+    width: 100px;
+    border-radius:100vw;
+    border: none;
+    background-color: gold;
+    font-family: cursive;
+    font-size: 14px;
+
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="main">
+        <input placeholder="Enter Keyword" type="text">
+        <button>Generate</button>
+        <img src="" alt="" id="qr-code">
+  </div>
+</body>
+<script>
+  const button = document.getElementsByTagName('button')[0];
+  const input = document.getElementsByTagName('input')[0];
+  const qrCodeImg = document.getElementById('qr-code');
+
+  const callApp = async () => {
+    const value = encodeURIComponent(input.value);
+    const url = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${value}`;
+
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Network response was not ok');
+      qrCodeImg.style.display = 'block'
+      const blob = await response.blob();
+      const imageUrl = URL.createObjectURL(blob);
+      qrCodeImg.src = imageUrl;
+    } catch (error) {
+      console.error('There has been a problem with your fetch operation:', error);
+    }
+  };
+
+  button.addEventListener('click', callApp);
+</script>
+</html>
